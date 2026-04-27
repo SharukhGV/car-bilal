@@ -1,123 +1,91 @@
-:root {
-  --bg-color: #1a1a1d;
-  --accent-color: #00f2ff;
-  --stop-color: #ff4b2b;
-  --panel-color: #2a2a2e;
-  --text-color: #e0e0e0;
-}
-
 body {
   margin: 0;
-  padding: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  overflow: hidden; /* Prevents bouncing on mobile */
-  user-select: none; /* Prevents text selection while tapping buttons */
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .controller {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  height: 100vh;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
   padding: 20px;
-  box-sizing: border-box;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
 }
 
 h1 {
-  font-weight: 300;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent-color);
-  text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+  margin-bottom: 10px;
+  font-size: 1.8rem;
 }
 
-/* D-PAD Layout */
+.reverse-toggle {
+  margin-bottom: 15px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #444;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.reverse-toggle.active {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  box-shadow: 0 0 10px #ff4b2b;
+}
+
 .d-pad {
-  display: grid;
-  grid-template-columns: 80px 80px 80px;
-  grid-template-rows: 80px 80px 80px;
-  gap: 15px;
-  background: var(--panel-color);
-  padding: 25px;
-  border-radius: 50%;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .middle-row {
-  display: contents; /* Allows children to stay in the grid */
+  display: flex;
+  gap: 10px;
 }
 
-/* Button Styling */
 button {
-  background: #3a3a3f;
-  border: 1px solid #4a4a4f;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  background: linear-gradient(145deg, #1e2a38, #243447);
   color: white;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.1s ease;
-  box-shadow: 0 4px 0 #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
+  box-shadow: 4px 4px 10px #000, -2px -2px 6px #3a4a5a;
+  transition: all 0.15s ease-in-out;
 }
 
 button:active {
-  transform: translateY(4px);
-  box-shadow: 0 0 0 #222;
-  background: var(--accent-color);
-  color: black;
+  transform: scale(0.92);
+  box-shadow: inset 2px 2px 6px #000;
 }
 
-/* Specific button placements */
-.d-pad button:nth-child(1) { grid-column: 2; } /* UP */
-.middle-row button:nth-child(1) { grid-column: 1; } /* LEFT */
-.middle-row button:nth-child(2).stop-btn { 
-  background: var(--stop-color); 
-  border-radius: 50%;
-  color: white;
-  font-size: 12px;
+.stop-btn {
+  background: linear-gradient(45deg, #ff0000, #cc0000);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
-.middle-row button:nth-child(3) { grid-column: 3; } /* RIGHT */
-.d-pad button:nth-child(3) { grid-column: 2; } /* DOWN */
 
-/* Speed Controls */
 .speed-controls {
-  width: 100%;
-  max-width: 300px;
-  text-align: center;
-  background: var(--panel-color);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  margin-top: 10px;
 }
 
-.speed-controls p {
-  margin: 0 0 15px 0;
-  font-size: 18px;
-  color: var(--accent-color);
-  font-family: monospace;
+.speed-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
-.speed-controls button {
-  display: inline-block;
+.speed-buttons button {
   width: 60px;
-  height: 40px;
-  margin: 0 10px;
-  font-size: 20px;
-}
-
-/* Glowing accent for status */
-.speed-controls::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 2px;
-  background: var(--accent-color);
-  margin: 15px auto 0;
-  box-shadow: 0 0 8px var(--accent-color);
+  height: 50px;
+  font-size: 18px;
 }
