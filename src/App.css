@@ -1,0 +1,123 @@
+:root {
+  --bg-color: #1a1a1d;
+  --accent-color: #00f2ff;
+  --stop-color: #ff4b2b;
+  --panel-color: #2a2a2e;
+  --text-color: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden; /* Prevents bouncing on mobile */
+  user-select: none; /* Prevents text selection while tapping buttons */
+}
+
+.controller {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+/* D-PAD Layout */
+.d-pad {
+  display: grid;
+  grid-template-columns: 80px 80px 80px;
+  grid-template-rows: 80px 80px 80px;
+  gap: 15px;
+  background: var(--panel-color);
+  padding: 25px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.middle-row {
+  display: contents; /* Allows children to stay in the grid */
+}
+
+/* Button Styling */
+button {
+  background: #3a3a3f;
+  border: 1px solid #4a4a4f;
+  color: white;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  box-shadow: 0 4px 0 #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #222;
+  background: var(--accent-color);
+  color: black;
+}
+
+/* Specific button placements */
+.d-pad button:nth-child(1) { grid-column: 2; } /* UP */
+.middle-row button:nth-child(1) { grid-column: 1; } /* LEFT */
+.middle-row button:nth-child(2).stop-btn { 
+  background: var(--stop-color); 
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+}
+.middle-row button:nth-child(3) { grid-column: 3; } /* RIGHT */
+.d-pad button:nth-child(3) { grid-column: 2; } /* DOWN */
+
+/* Speed Controls */
+.speed-controls {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  background: var(--panel-color);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.speed-controls p {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: var(--accent-color);
+  font-family: monospace;
+}
+
+.speed-controls button {
+  display: inline-block;
+  width: 60px;
+  height: 40px;
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+/* Glowing accent for status */
+.speed-controls::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--accent-color);
+  margin: 15px auto 0;
+  box-shadow: 0 0 8px var(--accent-color);
+}
