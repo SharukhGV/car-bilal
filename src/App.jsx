@@ -5,8 +5,8 @@ function App() {
   const [speed, setSpeed] = useState(50);
   const [reverse, setReverse] = useState(false);
 
-  const PI_URL = "http://192.168.4.1:5000/move";
-
+// NEW (ESP32 WebServer configuration)
+const PI_URL = "http://192.168.4.1/move";
   const sendCommand = (action) => {
     const finalAction = reverse
       ? (action === 'forward' ? 'backward' :
